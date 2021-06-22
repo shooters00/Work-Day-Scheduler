@@ -52,7 +52,6 @@ function saveMyStuff(event) {
 function calColors() {
     //Get the time of day
     var time = moment().format("kk");
-    time=11;
 
     //Based upon the time of day, add the appropriate class to the time blocks that will style them.
     for (var i=9; i <= 17; i++) {
