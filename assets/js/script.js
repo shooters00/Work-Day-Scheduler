@@ -1,36 +1,44 @@
+var savedInfo = [];
+
 //Get the date from moment.js
 var day = moment().format("dddd, MMM Do");
 $("#currentDay").text(day);
 
+
+
 //Get data from local storage and put into the calendar in the correct location
 function init() {
+    calColors();
+
     if (localStorage.getItem("savedInfo") === null) {
         return;
     } else {
-        var returnSavedInfo = JSON.parse(localStorage.getItem("savedInfo"));
-        for (var i=0; i < returnSavedInfo.length; i++) {
-            var returnTask = returnSavedInfo[i].task;
-            var returnTime = "#"+returnSavedInfo[i].hour;
+        savedInfo = JSON.parse(localStorage.getItem("savedInfo"));
+        for (var i=0; i < savedInfo.length; i++) {
+            var returnTask = savedInfo[i].task;
+            var returnTime = "#"+savedInfo[i].hour;
             $(returnTime).children(".description").val(returnTask);
         }
+        return savedInfo;
     }
-    calColors();
+    
 }
 
 //When save button is clicked, this function pulls the value and id from the correct block.
-var savedInfo = [];
-
 function saveMyStuff(event) {
+
     event.preventDefault();
   
     var textLine = $(this).siblings(".description").val();
     var timeLine = $(this).parent().attr("id")
 
-    savedInfo.push({
+    var mySavedInfo = {
         hour: timeLine,
         //textLine: event.target.textContent,
         task: textLine
-    });
+    }
+ 
+    savedInfo.push(mySavedInfo);
 
     localStorage.setItem("savedInfo", JSON.stringify(savedInfo));
 }
@@ -42,7 +50,7 @@ function calColors() {
 
     //Based upon the time of day, add the appropriate class to the time blocks that will style them.
     for (var i=9; i <= 17; i++) {
-        (i).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+        //(i).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
         if (i < 10) {
             i="0" + i;
         }
