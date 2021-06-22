@@ -32,9 +32,14 @@ function saveMyStuff(event) {
     var textLine = $(this).siblings(".description").val();
     var timeLine = $(this).parent().attr("id")
 
+    var found = savedInfo.findIndex(x => x.hour === timeLine);
+    if (found !== -1) {
+        savedInfo.splice(found, 1);
+    }
+
+
     var mySavedInfo = {
         hour: timeLine,
-        //textLine: event.target.textContent,
         task: textLine
     }
  
