@@ -8,4 +8,4 @@
 * The GitHub Repo is located here: https://github.com/shooters00/Work-Day-Scheduler 
 
 ### Screenshots of project:
-![screencapture](https://github.com/shooters00/Coding-Quiz/blob/main/assets/Images/ScreenCapture.png)
+![screencapture](https://github.com/shooters00/Work-Day-Scheduler/blob/main/assets/Images/ScreenCapture.png)
